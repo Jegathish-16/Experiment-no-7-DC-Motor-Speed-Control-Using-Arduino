@@ -54,21 +54,32 @@ void loop()
 ```
 ### To Control RPM:
 ```
-const int motorpin1 = 5;
-const int motorpin2 = 6;
+#define motorIn1 5
+#define motorIn2 6
 
 void setup()
 {
-  pinMode(motorpin1, OUTPUT);
-  pinMode(motorpin2, OUTPUT);
+  pinMode(motorIn1,OUTPUT);
+  pinMode(motorIn2,OUTPUT);
 }
-
 void loop()
 {
-  digitalWrite(motorpin1, HIGH);
-  delay(2000);
-  digitalWrite(motorpin2, LOW);
-  delay(2000);
+  clockwise(0);
+  delay(3000);
+  counterclockwise(50);
+  delay(3000);
+}
+void counterclockwise(int speed)
+{
+  analogWrite(motorIn1,speed);
+  analogWrite(motorIn2,0);
+}
+
+void clockwise(int speed)
+{
+  
+  analogWrite(motorIn1,0);
+  analogWrite(motorIn2,speed);
 }
 ```
 ### OUTPUT
